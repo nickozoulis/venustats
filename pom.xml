@@ -13,4 +13,18 @@
         <module>data-formatter</module>
     </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.5.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.jopt-simple</groupId>
+            <artifactId>jopt-simple</artifactId>
+            <version>4.6</version>
+        </dependency>
+    </dependencies>
+
 </project>
