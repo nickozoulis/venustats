@@ -1,5 +1,4 @@
 # This script downloads the page with the course's grades.
-# Run as: sh crawl.sh
 
 # Url prefix and suffix, inbetween goes the course's id
 URL_PREFIX="http://e-grammateia.aueb.gr/unistudent/courseRelults.asp?dpcID=&orID=&mnuID=mnu5&studpg=&prID=&courseID=92-"
