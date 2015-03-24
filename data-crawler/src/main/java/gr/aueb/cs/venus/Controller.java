@@ -1,3 +1,5 @@
+package gr.aueb.cs.venus;
+
 import edu.uci.ics.crawler4j.crawler.CrawlConfig;
 import edu.uci.ics.crawler4j.crawler.CrawlController;
 import edu.uci.ics.crawler4j.fetcher.PageFetcher;
@@ -16,7 +18,7 @@ import java.io.File;
 public class Controller {
 
     static final Logger logger = LoggerFactory.getLogger(Controller.class);
-    private static String inputDomain, outputPath;
+    private static String inputDomain, outputPath = "/var/tmp/";
 
     public static void main(String[] args) {
         OptionParser parser = new OptionParser("i:o:");
