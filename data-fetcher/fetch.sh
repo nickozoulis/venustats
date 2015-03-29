@@ -12,7 +12,7 @@ INPUT_DIR=/var/tmp
 
 # Loop over every course range, obtained from a file.
 for C in $(cat ${INPUT_DIR}/cource_codes_names | awk '{print $1}')
-	do
+do
 	URL=${URL_PREFIX}${C}${URL_SUFFIX}
 	# Downloading
 	wget -P ${OUTPUT_DIR} ${URL}
