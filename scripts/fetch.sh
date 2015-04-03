@@ -1,5 +1,5 @@
 # This script downloads the page with the course's grades.
-# Example run: sh crawl.sh -i /var/tmp/cource_codes_names -o /var/tmp/
+# Example run: sh fetch.sh -i /var/tmp/cource_codes_names -o /var/tmp/
 
 #<-- Setting script's external arguments
 while getopts ":i:o:" opt; do
