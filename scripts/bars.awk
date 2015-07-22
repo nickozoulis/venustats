@@ -1,6 +1,6 @@
 {
 	# Conditions of the bars of the barchart.
-	if ($2==0) arr[1]+=1;
+	if ($2=="0") arr[1]+=1;
 	else if ($2=="0,5") arr[2]+=1;
 	else if ($2=="1") arr[3]+=1;
 	else if ($2=="1,5") arr[4]+=1;
