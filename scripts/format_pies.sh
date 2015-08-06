@@ -4,9 +4,9 @@
 #<-- Setting script's external arguments
 while getopts ":i:o:y:" opt; do
   case $opt in
-    i) INPUT="$OPTARG"
+    d) DATA="$OPTARG"
     ;;
-	o) OUTPUT="$OPTARG"
+	c) CSV="$OPTARG"
     ;;
 	y) YEAR="$OPTARG"
     ;;
@@ -20,17 +20,17 @@ done
 # Cut is used to substring the 2nd and 3rd characters of the grep command, containing the year of entry of the student. (i.e: 310**** -> 10)
 # Use the pies.awk script to format the piechart data.
 
-grep 'ΦΕΒΡ' $INPUT | cut -c2-3 > _data.txt
-awk -v YEAR="$YEAR" -v SEM="February" -f pies.awk _data.txt >> $OUTPUT
+grep 'ΦΕΒΡ' $DATA | cut -c2-3 > _data.txt
+awk -v YEAR="$YEAR" -v SEM="February" -f pies.awk _data.txt >> $CSV
 
-grep 'ΙΟΥΝ' $INPUT | cut -c2-3 > _data.txt
-awk -v YEAR="$YEAR" -v SEM="June" -f pies.awk _data.txt >> $OUTPUT
+grep 'ΙΟΥΝ' $DATA | cut -c2-3 > _data.txt
+awk -v YEAR="$YEAR" -v SEM="June" -f pies.awk _data.txt >> $CSV
 
-grep 'ΣΕΠΤ' $INPUT | cut -c2-3 > _data.txt
-awk -v YEAR="$YEAR" -v SEM="September" -f pies.awk _data.txt >> $OUTPUT
+grep 'ΣΕΠΤ' $DATA | cut -c2-3 > _data.txt
+awk -v YEAR="$YEAR" -v SEM="September" -f pies.awk _data.txt >> $CSV
 
 # Remove any empty lines in the .csv.
-sed -i '/^$/d' $OUTPUT
+sed -i '/^$/d' $CSV
 
 # Remove temporary file.
 rm -f _data.txt
