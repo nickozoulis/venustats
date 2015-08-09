@@ -2,7 +2,7 @@
 # Example run: sh format.sh -i /var/tmp/venus-stats-data/grades/ -o /var/tmp/venus-stats-data/csv/piecharts/ -y 2013-2014
 
 #<-- Setting script's external arguments
-while getopts ":i:o:y:" opt; do
+while getopts ":d:c:y:" opt; do
   case $opt in
     d) DATA="$OPTARG"
     ;;
