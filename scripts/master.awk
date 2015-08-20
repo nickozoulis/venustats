@@ -8,12 +8,18 @@ BEGIN {
 }
 
 {
-	# Concatenate paths with values from joined_courses.
-	csv_path=csv_gen$1".csv";
+	# Concatenate paths with values from joined_courses.	
 	grades_path=GRADES_PATH$2"_data.txt";	
 	
+	csv_path=csv_gen$1".csv";
 	system("sh format_general.sh -d " grades_path " -c " csv_path " -y " YEAR);	
-	#system("sh format_bars.sh -d " grades_path " -c " csv_path " -y " YEAR);	
-	#system("sh format_pies.sh -d " grades_path " -c " csv_path " -y " YEAR);	
-	
+	printf("Format General completed: [" $1"]\n");
+
+	csv_path=csv_bars$1".csv";
+	system("sh format_bars.sh -d " grades_path " -c " csv_path " -y " YEAR);
+	printf("Format Bars completed: [" $1"]\n");
+
+	csv_path=csv_pies$1".csv";
+	system("sh format_pies.sh -d " grades_path " -c " csv_path " -y " YEAR);	
+	printf("Format Pies completed: [" $1"]\n");	
 }
