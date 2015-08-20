@@ -21,11 +21,11 @@ done
 wc -l ${CSV} | awk '{print $1 - 2}' | xargs -I{} head -n {} ${CSV} > _temp_
 
 # Calculate course's statistics according to examing period and append the current .csv file.
-grep 'ΦΕΒΡ' ${DATA} | awk '{if($2>=5){passed+=1};sum+=$2;all+=1} END {printf "'"${YEAR}"'" ",February," all "," passed "," all-passed "," "%d" "," "%.2f\n", passed*100/all, sum/all}' >> _temp_
+grep 'ΦΕΒΡ' ${DATA} | awk '{if($2>=5){passed+=1;sum+=$2};all+=1} END {printf "'"${YEAR}"'" ",February," all "," passed "," all-passed "," "%d" "," "%.2f\n", passed*100/all, sum/passed}' >> _temp_
 
-grep 'ΙΟΥΝ' ${DATA} | awk '{if($2>=5){passed+=1};sum+=$2;all+=1} END {printf "'"${YEAR}"'" ",June," all "," passed "," all-passed "," "%d" "," "%.2f\n",passed*100/all, sum/all}' >> _temp_
+grep 'ΙΟΥΝ' ${DATA} | awk '{if($2>=5){passed+=1;sum+=$2};all+=1} END {printf "'"${YEAR}"'" ",June," all "," passed "," all-passed "," "%d" "," "%.2f\n",passed*100/all, sum/passed}' >> _temp_
 
-grep 'ΣΕΠΤ' ${DATA} | awk '{if($2>=5){passed+=1};sum+=$2;all+=1} END {printf "'"${YEAR}"'" ",September," all "," passed "," all-passed "," "%d" "," "%.2f\n", passed*100/all, sum/all}' >> _temp_
+grep 'ΣΕΠΤ' ${DATA} | awk '{if($2>=5){passed+=1;sum+=$2};all+=1} END {printf "'"${YEAR}"'" ",September," all "," passed "," all-passed "," "%d" "," "%.2f\n", passed*100/all, sum/passed}' >> _temp_
 
 
 
@@ -36,6 +36,7 @@ awk -F "\"*,\"*"  '{if($3!=0){sumGrades+=$7;count+=1}} END {printf "%.2f\n",sumG
 
 mv _temp__ ${CSV}_.csv
 rm -f _temp_*
+mv ${CSV}_.csv ${CSV}
 
 
 
