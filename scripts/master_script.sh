@@ -1,4 +1,4 @@
-#sh master_script.sh -i /var/tmp/test/join_test -y 2013-2014 -g /var/tmp/grades/ -c /var/tmp/csv/
+#sh master_script.sh -i /var/tmp/test/join_test -y 2013-2014 -g /var/tmp/grades/ -c /var/tmp/csv/ 
 #
 #<-- Setting script's external arguments
 while getopts ":i:y:g:c:" opt; do
@@ -18,4 +18,7 @@ done
 #-->
 
 # With a single awk script, computes all the statistics and refreshes the csv files.
-awk -v YEAR="$YEAR" -v GRADES_PATH="$GRADES_PATH" -v CSV_PATH="$CSV_PATH" -f master.awk $JOINED_COURSES
+#awk -F "," -v YEAR="$YEAR" -v GRADES_PATH="$GRADES_PATH" -v CSV_PATH="$CSV_PATH" -r RANK_COURSES_PATH="$RANK_COURSES_PATH" -f master.awk $JOINED_COURSES
+
+# Compute ranks.
+awk -F "," -v CSV_PATH="$CSV_PATH" -f ranks.awk $JOINED_COURSES
