@@ -16,12 +16,21 @@ BEGIN {
 
 END {
 	# Sort both ranks csvs by second column.
-	# @arg: --field-separator=';' -> Sets the delemiter to be the ';' symbol.
+	# @arg: -r -> Reverses the sort output from ascending to descending order.
+	# @arg: --field-separator=',' -> Sets the delemiter to be the comma.
 	# @arg: --key=2 -> Sorts the file according to 2nd column.
-	system("sort --field-separator=';' --key=2 " rank_average_path);
-	system("sort --field-separator=';' --key=2 " rank_percentage_path);
+	# @arg: -o -> Sets the sort's output destination. In this case overwrites the old one.
+	system("sort -r --field-separator=',' --key=2 -o " rank_average_path " " rank_average_path);
+	system("sort -r --field-separator=',' --key=2 -o " rank_percentage_path " " rank_percentage_path);
 
 	# Remove underscores from greek names.
-	system("sed -i 's/_/ /g' " rank_average_path);
-	system("sed -i 's/_/ /g' " rank_percentage_path);
+	# @arg: -i: Makes the changes inline (overwrites the old one).
+	# PORTABILITY ISSUE, solution from stackoverflow: http://stackoverflow.com/questions/16745988/sed-command-works-fine-on-ubuntu-but-not-mac 
+	# -> Ubuntu ships with GNU sed, where the suffix for the -i option is optional. OS X ships with BSD sed, where the suffix is mandatory. Try sed -i ''
+	system("sed -i '' 's/_/ /g' " rank_average_path);
+	system("sed -i '' 's/_/ /g' " rank_percentage_path);
+
+	# So the script is executed from Unix, just comment the above and uncomment the below:
+	#system("sed -i 's/_/ /g' " rank_average_path);
+	#system("sed -i 's/_/ /g' " rank_percentage_path);
 }
