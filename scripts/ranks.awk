@@ -17,11 +17,12 @@ BEGIN {
 END {
 	# Sort both ranks csvs by second column.
 	# @arg: -r -> Reverses the sort output from ascending to descending order.
+	# @arg: -g -> Compare according to general numerical value.
 	# @arg: --field-separator=',' -> Sets the delemiter to be the comma.
 	# @arg: --key=2 -> Sorts the file according to 2nd column.
 	# @arg: -o -> Sets the sort's output destination. In this case overwrites the old one.
-	system("sort -r --field-separator=',' --key=2 -o " rank_average_path " " rank_average_path);
-	system("sort -r --field-separator=',' --key=2 -o " rank_percentage_path " " rank_percentage_path);
+	system("sort -r -g --field-separator=',' --key=2 -o " rank_average_path " " rank_average_path);
+	system("sort -r -g --field-separator=',' --key=2 -o " rank_percentage_path " " rank_percentage_path);
 
 	# Remove underscores from greek names.
 	# @arg: -i: Makes the changes inline (overwrites the old one).
@@ -33,4 +34,8 @@ END {
 	# So the script is executed from Unix, just comment the above and uncomment the below:
 	#system("sed -i 's/_/ /g' " rank_average_path);
 	#system("sed -i 's/_/ /g' " rank_percentage_path);
+
+	# Just removes the old ranks.
+	system("mv " rank_average_path " " csv_ranks"ranks_mean_average_grades_success.csv");
+	system("mv " rank_percentage_path " " csv_ranks"ranks_success_percentage.csv");
 }
