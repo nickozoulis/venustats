@@ -31,7 +31,7 @@ END {
 	system("sed -i '' 's/_/ /g' " rank_average_path);
 	system("sed -i '' 's/_/ /g' " rank_percentage_path);
 
-	# So the script is executed from Unix, just comment the above and uncomment the below:
+	# If the script is executed from Unix, just comment the above and uncomment the below:
 	#system("sed -i 's/_/ /g' " rank_average_path);
 	#system("sed -i 's/_/ /g' " rank_percentage_path);
 
