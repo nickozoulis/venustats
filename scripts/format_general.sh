@@ -20,13 +20,33 @@ done
 # Create a temporary file without the last 2 lines(the average grade and percentage) of the file.
 wc -l ${CSV} | awk '{print $1 - 2}' | xargs -I{} head -n {} ${CSV} > _temp_
 
-# Calculate course's statistics according to examing period and append the current .csv file.
-grep 'ΦΕΒΡ' ${DATA} | awk '{if($2>=5){passed+=1;sum+=$2};all+=1} END {printf "'"${YEAR}"'" ",February," all "," passed "," all-passed "," "%d" "," "%.2f\n", passed*100/all, sum/passed}' >> _temp_
+# Calculate course's statistics according to examing period and append the current .csv file foreach examination period separately.
+# Executes grep and stores the output in a variable so as to check if there is any output.
+# If there is no output, the 'then' part will be executed and will print a fixed format.
+# If there is any output, the 'else' part will be executed.
+grades=$(grep 'ΦΕΒΡ' ${DATA})
+if [ $? -eq 1 ]
+    then
+        printf ${YEAR}",February,0,0,0,0,0.0\n" >> _temp_
+    else
+      grep 'ΦΕΒΡ' ${DATA} | awk '{if($2>=5){passed+=1;sum+=$2};all+=1} END {printf "'"${YEAR}"'" ",February," all "," passed "," all-passed "," "%d" "," "%.2f\n", passed*100/all, sum/passed}' >> _temp_
+fi
 
-grep 'ΙΟΥΝ' ${DATA} | awk '{if($2>=5){passed+=1;sum+=$2};all+=1} END {printf "'"${YEAR}"'" ",June," all "," passed "," all-passed "," "%d" "," "%.2f\n",passed*100/all, sum/passed}' >> _temp_
+grades=$(grep 'ΙΟΥΝ' ${DATA})
+if [ $? -eq 1 ]
+    then
+        printf ${YEAR}",June,0,0,0,0,0.0\n" >> _temp_
+    else
+      grep 'ΙΟΥΝ' ${DATA} | awk '{if($2>=5){passed+=1;sum+=$2};all+=1} END {printf "'"${YEAR}"'" ",June," all "," passed "," all-passed "," "%d" "," "%.2f\n",passed*100/all, sum/passed}' >> _temp_
+fi
 
-grep 'ΣΕΠΤ' ${DATA} | awk '{if($2>=5){passed+=1;sum+=$2};all+=1} END {printf "'"${YEAR}"'" ",September," all "," passed "," all-passed "," "%d" "," "%.2f\n", passed*100/all, sum/passed}' >> _temp_
-
+grades=$(grep 'ΣΕΠΤ' ${DATA})
+if [ $? -eq 1 ]
+    then
+        printf ${YEAR}",September,0,0,0,0,0.0\n" >> _temp_
+    else
+      grep 'ΣΕΠΤ' ${DATA} | awk '{if($2>=5){passed+=1;sum+=$2};all+=1} END {printf "'"${YEAR}"'" ",September," all "," passed "," all-passed "," "%d" "," "%.2f\n", passed*100/all, sum/passed}' >> _temp_
+fi
 
 
 # Calculate the new course's percentage-of-success and success-grade-averages.

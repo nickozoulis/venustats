@@ -17,9 +17,10 @@ while getopts ":i:c:a:p:" opt; do
 done
 #-->
 
+
 # Takes the last line of the general csv (grade average) and appends the ranks csv with it's greek name.
-tail $CSV_PATH -n 1 | xargs -I{} printf $COURSE_NAME","{}"\n" >> $AVERAGE_GRADES
+tail -n 1 $CSV_PATH | xargs -I{} printf $COURSE_NAME","{}"\n" >> $AVERAGE_GRADES
 
 # Takes the line-before-the last of the general csv (success percentage) and appends the ranks csv with it's greek name.
-tail $CSV_PATH -n 2 | head -1 | xargs -I{} printf $COURSE_NAME","{}"\n" >> $SUCCESS_PERCENTAGES
+tail -n 2 $CSV_PATH | head -1 | xargs -I{} printf $COURSE_NAME","{}"\n" >> $SUCCESS_PERCENTAGES
 
