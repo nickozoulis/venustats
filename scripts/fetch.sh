@@ -54,3 +54,6 @@ do
 	mv ${FILE}_ ${FILE}
 done
 
+# Dirty fix for the name of a specific course that cause problems to the automated process later. Rename without the comma.
+mv ${OUTPUT}${DIR}ΕΠΑΛΗΘΕΥΣΗ_,ΕΠΙΚΥΡΩΣΗ_ΚΑΙ_ΣΥΝΤΗΡΗΣΗ_ΛΟΓΙΣΜΙΚΟΥ_data.txt ${OUTPUT}${DIR}ΕΠΑΛΗΘΕΥΣΗ_ΕΠΙΚΥΡΩΣΗ_ΚΑΙ_ΣΥΝΤΗΡΗΣΗ_ΛΟΓΙΣΜΙΚΟΥ_data.txt
+

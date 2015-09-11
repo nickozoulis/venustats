@@ -49,10 +49,11 @@ if [ $? -eq 1 ]
 fi
 
 
-# Calculate the new course's percentage-of-success and success-grade-averages.
+# Calculate the new course's percentage-of-success and success-grade-averages. 
+# If checks whether there are any students that passed the course. [if($4!=0)]
 cat _temp_ > _temp__
-awk -F "\"*,\"*"  '{if($3!=0){sumPercentages+=$6;count+=1}} END {printf "%.d\n",sumPercentages/count}' _temp_ >> _temp__
-awk -F "\"*,\"*"  '{if($3!=0){sumGrades+=$7;count+=1}} END {printf "%.2f\n",sumGrades/count}' _temp_ >> _temp__
+awk -F "\"*,\"*"  '{if($4!=0){sumPercentages+=$6;count+=1}} END {printf "%.d\n",sumPercentages/count}' _temp_ >> _temp__
+awk -F "\"*,\"*"  '{if($4!=0){sumGrades+=$7;count+=1}} END {printf "%.2f\n",sumGrades/count}' _temp_ >> _temp__
 
 mv _temp__ ${CSV}_.csv
 rm -f _temp_*

@@ -15,12 +15,12 @@ BEGIN {
 	system("sh format_general.sh -d " grades_path " -c " csv_path " -y " YEAR);	
 	printf(">Format General completed: [" $1"]\n");
 
-	csv_path=csv_bars$1".csv";
-	system("sh format_bars.sh -d " grades_path " -c " csv_path " -y " YEAR);
-	printf(">Format Bars completed: [" $1"]\n");
+#	csv_path=csv_bars$1".csv";
+#	system("sh format_bars.sh -d " grades_path " -c " csv_path " -y " YEAR);
+#	printf(">Format Bars completed: [" $1"]\n");
 
-	csv_path=csv_pies$1".csv";
-	system("sh format_pies.sh -d " grades_path " -c " csv_path " -y " YEAR);	
-	printf(">Format Pies completed: [" $1"]\n");	
+#	csv_path=csv_pies$1".csv";
+#	system("sh format_pies.sh -d " grades_path " -c " csv_path " -y " YEAR);	
+#	printf(">Format Pies completed: [" $1"]\n");	
 }
 

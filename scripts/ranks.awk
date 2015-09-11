@@ -26,11 +26,10 @@ END {
 
 	# Remove underscores from greek names.
 	# @arg: -i: Makes the changes inline (overwrites the old one).
-	# PORTABILITY ISSUE, solution from stackoverflow: http://stackoverflow.com/questions/16745988/sed-command-works-fine-on-ubuntu-but-not-mac 
+	# -----------> PORTABILITY ISSUE <-----------, solution from stackoverflow: http://stackoverflow.com/questions/16745988/sed-command-works-fine-on-ubuntu-but-not-mac 
 	# -> Ubuntu ships with GNU sed, where the suffix for the -i option is optional. OS X ships with BSD sed, where the suffix is mandatory. Try sed -i ''
 	system("sed -i '' 's/_/ /g' " rank_average_path);
 	system("sed -i '' 's/_/ /g' " rank_percentage_path);
-
 	# If the script is executed from Unix, just comment the above and uncomment the below:
 	#system("sed -i 's/_/ /g' " rank_average_path);
 	#system("sed -i 's/_/ /g' " rank_percentage_path);

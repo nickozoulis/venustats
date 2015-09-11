@@ -30,8 +30,8 @@ done
 # @arg: -F -> Sets comma as the delimeter for awk execution.
 # @arg: -v -> An input variable to awk.
 # @arg: -f -> The awk script to be executed on the file next to .awk (JOINED_COURSES)
-awk -F "," -v CSV_PATH="$CSV_PATH" -f ranks.awk $JOINED_COURSES
+#awk -F "," -v CSV_PATH="$CSV_PATH" -f ranks.awk $JOINED_COURSES
 
 
 #TEMP RUN COMMAND
-#sh master_script.sh -i /Users/nickozoulis/Desktop/tmp/test/join_course_names -y 2013-2014 -g /Users/nickozoulis/Desktop/tmp/grades/ -c /Users/nickozoulis/Desktop/tmp/new_csv/
+sh master_script.sh -i /Users/nickozoulis/Desktop/tmp/test/join_course_names -y 2013-2014 -g /Users/nickozoulis/Desktop/tmp/grades/ -c /Users/nickozoulis/Desktop/tmp/new_csv/
