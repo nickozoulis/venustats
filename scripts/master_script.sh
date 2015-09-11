@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-#sh master_script.sh -i /var/tmp/test/join_test -y 2013-2014 -g /var/tmp/grades/ -c /var/tmp/csv/ 
+#sh master_script.sh -i /Users/nickozoulis/Desktop/tmp/test/join_course_names -y 2013-2014 -g /Users/nickozoulis/Desktop/tmp/grades/ -c /Users/nickozoulis/Desktop/tmp/new_csv/
 #
 #<-- Setting script's external arguments
 while getopts ":i:y:g:c:" opt; do
@@ -24,14 +24,15 @@ done
 # @arg: -F -> Sets comma as the delimeter for awk execution.
 # @arg: -v -> An input variable to awk.
 # @arg: -f -> The awk script to be executed on the file next to .awk (JOINED_COURSES)
-#awk -F "," -v YEAR="$YEAR" -v GRADES_PATH="$GRADES_PATH" -v CSV_PATH="$CSV_PATH" -f master.awk $JOINED_COURSES
+awk -F "," -v YEAR="$YEAR" -v GRADES_PATH="$GRADES_PATH" -v CSV_PATH="$CSV_PATH" -f master.awk $JOINED_COURSES
 
 # Compute ranks. 
 # @arg: -F -> Sets comma as the delimeter for awk execution.
 # @arg: -v -> An input variable to awk.
 # @arg: -f -> The awk script to be executed on the file next to .awk (JOINED_COURSES)
-#awk -F "," -v CSV_PATH="$CSV_PATH" -f ranks.awk $JOINED_COURSES
+awk -F "," -v CSV_PATH="$CSV_PATH" -f ranks.awk $JOINED_COURSES
 
 
-#TEMP RUN COMMAND
-sh master_script.sh -i /Users/nickozoulis/Desktop/tmp/test/join_course_names -y 2013-2014 -g /Users/nickozoulis/Desktop/tmp/grades/ -c /Users/nickozoulis/Desktop/tmp/new_csv/
+
+
+
